@@ -47,7 +47,7 @@ example =
 
 fontFamily : String
 fontFamily =
-    "Caveat"
+    "Caveat Brush"
 
 unit : Float
 unit =
@@ -81,8 +81,7 @@ diamond label =
         text =
             fromString label
                 |> Text.shape Italic
-                |> Text.size Text.huge
-                |> Text.weight Text.Black
+                |> Text.size Text.large
                 |> Text.typeface (Text.Font fontFamily)
                 |> rendered
 
@@ -119,7 +118,7 @@ box label =
         text =
             fromString label
                 |> Text.typeface (Text.Font fontFamily)
-                |> Text.size Text.huge
+                |> Text.size Text.large
                 |> rendered
 
         w =

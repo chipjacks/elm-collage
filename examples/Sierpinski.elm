@@ -1,5 +1,6 @@
 module Sierpinski exposing (main, sierpinski)
 
+import Example
 import Collage exposing (..)
 import Collage.Layout exposing (..)
 import Collage.Render exposing (..)
@@ -23,11 +24,19 @@ sierpinski n side =
         ]
 
 
-main : Html msg
-main =
-  sierpinski 5 10
-    |> svg
+collage : Collage msg
+collage =
+  sierpinski 5 30
 
+
+main : Platform.Program () (Example.Model () ()) (Example.Msg ())
+main =
+    Example.example
+        { init = ()
+        , update = (\_ m -> m)
+        , render = (\_ -> collage)
+        , view = identity
+        }
 
 
 {- Brent Yorgey's Original Code:

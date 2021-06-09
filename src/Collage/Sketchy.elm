@@ -86,8 +86,11 @@ sketchy config collage =
 
                 sketchFill ps =
                     Fill.hachureLines hachureThickness ps
-                        |> List.indexedMap (\i ends -> sketchPoints { config | seed = config.seed + i, roughness = 1 } ends |> Collage.curve)
-                        |> List.map (Collage.solid hachureThickness fill |> Collage.traced)
+                        |> List.concat
+                        |> sketchPoints { config | roughness = 1 }
+                        |> Collage.curve
+                        |> Collage.traced (Collage.solid hachureThickness fill)
+                        |> List.singleton
 
                 sketchEllipse ps =
                     sketchPoints { config | bowing = 0 } (ps ++ rotateList ps)

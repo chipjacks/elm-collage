@@ -3,7 +3,7 @@ module Example exposing (Model, Msg, example)
 import Browser
 import Collage exposing (..)
 import Collage.Render exposing (svg)
-import Collage.Sketchy as Sketchy exposing (sketchy)
+import Collage.Sketchy as Sketchy exposing (sketchy, defaultConfig)
 import Html exposing (Html)
 import Html.Attributes
 import Html.Events
@@ -40,7 +40,7 @@ init : (childModel -> Collage childMsg) -> childModel -> ( Model childMsg childM
 init render child =
     let
         model =
-            Model (render child) Normal child Sketchy.defaultConfig
+            Model (render child) Normal child { defaultConfig | roughness = 3 }
     in
     ( model, Cmd.none )
 
